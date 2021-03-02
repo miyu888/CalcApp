@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CalcApp</string>
+    <string name="prompt">ここに数字を入力</string>
+</resources>
