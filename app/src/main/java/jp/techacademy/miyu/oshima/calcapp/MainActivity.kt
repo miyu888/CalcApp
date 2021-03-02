@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
-import java.lang.IllegalArgumentException
 
         //var nStr : String = ""
         //var nlist = ArrayList<Double>()
@@ -30,13 +29,12 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("VALUE2",20)
             startActivity(intent)
 
-            fun validation(percentage :String) {
-                if (percentage !in 0..100) {
-                    throw IllegalArgumentException(
-            buttonplus.setOnClickListener{view ->
-                Snackbar.make(view,"数値を正確に入力してください",Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Undo"){}.show()
-            })
+            if("VALLUE1" == null || "VALLUE2"== null) {
+                buttonplus.setOnClickListener { view ->
+                    Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Undo") {}.show()
+                }
+            }
         }
 
         buttonminus.text = "Minus"
