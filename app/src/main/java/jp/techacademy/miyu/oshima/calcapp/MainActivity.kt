@@ -7,6 +7,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.widget.EditText
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 
         //var nStr : String = ""
@@ -18,59 +19,75 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         textView.text = "計算する"
+        val result = findViewById(R.id.textView) as TextView
 
 
         buttonplus.text = "Plus"
-        buttonplus.setOnClickListener{
-            //val fomula = editText1 + editText2
-            //SecondCalcApp.text = editText1.text.toString()
+        buttonplus.setOnClickListener{view ->
+            result.text = (getNumber1() + getNumber2()).toString()
+
             val intent = Intent(this, SecondCalcApp::class.java)
-            intent.putExtra("VALUE1", 10)
-            intent.putExtra("VALUE2",20)
             startActivity(intent)
 
-            if("VALLUE1" == null || "VALLUE2"== null) {
-                buttonplus.setOnClickListener { view ->
-                    Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Undo") {}.show()
-                }
+            if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
+                Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Undo") {}.show()
             }
         }
 
         buttonminus.text = "Minus"
-        buttonminus.setOnClickListener{
+        buttonminus.setOnClickListener{view ->
+            result.text = "0"
+            result.text = (getNumber1() - getNumber2()).toString()
+
             val intent = Intent(this, SecondCalcApp::class.java)
             startActivity(intent)
 
-            buttonminus.setOnClickListener{view ->
-                Snackbar.make(view,"数値を正確に入力してください",Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Undo"){}.show()
+            if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
+                Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Undo") {}.show()
             }
         }
 
         buttonmultiply.text = "multiplize"
-        buttonmultiply.setOnClickListener{
+        buttonmultiply.setOnClickListener{view ->
+            result.text = "0"
+            result.text = (getNumber1() * getNumber2()).toString()
+
             val intent = Intent(this, SecondCalcApp::class.java)
             startActivity(intent)
 
-            buttonmultiply.setOnClickListener{view ->
-                Snackbar.make(view,"数値を正確に入力してください",Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Undo"){}.show()
+            if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
+                Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Undo") {}.show()
             }
         }
 
         buttondivide.text = "divide"
-        buttondivide.setOnClickListener{
+        buttondivide.setOnClickListener{view ->
+            result.text = "0"
+            result.text = (getNumber1() / getNumber2()).toString()
+
             val intent = Intent(this, SecondCalcApp::class.java)
             startActivity(intent)
 
-            buttondivide.setOnClickListener{view ->
-                Snackbar.make(view,"数値を正確に入力してください",Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Undo"){}.show()
+            if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
+                Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Undo") {}.show()
             }
         }
 
     }
 
+    fun getNumber1():Int {
+        val fomula1 = findViewById(R.id.editText1) as EditText
+        return Integer.parseInt(fomula1.text.toString())
+    }
+
+    fun getNumber2():Int{
+        val fomula2 = findViewById(R.id.editText2) as EditText
+        return Integer.parseInt(fomula2.text.toString())
+
+    }
 
 }
