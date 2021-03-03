@@ -24,57 +24,66 @@ class MainActivity : AppCompatActivity() {
 
         buttonplus.text = "Plus"
         buttonplus.setOnClickListener{view ->
-            result.text = (getNumber1() + getNumber2()).toString()
-
-            val intent = Intent(this, SecondCalcApp::class.java)
-            startActivity(intent)
-
             if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
                 Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Undo") {}.show()
+                return@setOnClickListener
             }
+            result.text = (getNumber1() + getNumber2()).toString()
+
+            val intent = Intent(this, SecondCalcApp::class.java).apply {
+                intent.putExtra("result.text", result.text.toString())}
+            startActivity(intent)
+
         }
 
         buttonminus.text = "Minus"
         buttonminus.setOnClickListener{view ->
-            result.text = "0"
-            result.text = (getNumber1() - getNumber2()).toString()
-
-            val intent = Intent(this, SecondCalcApp::class.java)
-            startActivity(intent)
-
             if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
                 Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Undo") {}.show()
+                return@setOnClickListener
             }
+            result.text = "0"
+            result.text = (getNumber1() - getNumber2()).toString()
+
+            val intent = Intent(this, SecondCalcApp::class.java).apply {
+                intent.putExtra("result.text", result.text.toString())}
+            startActivity(intent)
+
         }
 
         buttonmultiply.text = "multiplize"
         buttonmultiply.setOnClickListener{view ->
-            result.text = "0"
-            result.text = (getNumber1() * getNumber2()).toString()
-
-            val intent = Intent(this, SecondCalcApp::class.java)
-            startActivity(intent)
-
             if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
                 Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Undo") {}.show()
+                return@setOnClickListener
             }
+
+            result.text = "0"
+            result.text = (getNumber1() * getNumber2()).toString()
+
+            val intent = Intent(this, SecondCalcApp::class.java).apply {
+                intent.putExtra("result.text", result.text.toString())}
+            startActivity(intent)
+
         }
 
         buttondivide.text = "divide"
         buttondivide.setOnClickListener{view ->
-            result.text = "0"
-            result.text = (getNumber1() / getNumber2()).toString()
-
-            val intent = Intent(this, SecondCalcApp::class.java)
-            startActivity(intent)
-
             if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
                 Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Undo") {}.show()
+                return@setOnClickListener
             }
+            result.text = "0"
+            result.text = (getNumber1() / getNumber2()).toString()
+
+            val intent = Intent(this, SecondCalcApp::class.java).apply {
+                intent.putExtra("result.text", result.text.toString())}
+            startActivity(intent)
+
         }
 
     }
