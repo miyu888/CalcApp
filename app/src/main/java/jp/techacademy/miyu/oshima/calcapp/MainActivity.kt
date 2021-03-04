@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             result.text = (getNumber1() + getNumber2()).toString()
 
             val intent = Intent(this, SecondCalcApp::class.java).apply {
-                intent.putExtra("result.text", result.text.toString())}
+                intent.putExtra("result.text", result.text.toString())} //第一引数Key、第二引数渡したい値
             startActivity(intent)
 
         }

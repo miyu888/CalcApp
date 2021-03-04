@@ -11,7 +11,9 @@ class SecondCalcApp : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second_calc_app)
 
-        val result = intent.getSerializableExtra("result.text") as MainActivity
-        Log.d("receiveObject::", result.toString())
+        val intent = getIntent()
+        val result = intent.getStringExtra("result.text")
+        textView.text = "${result}"
+        Log.d("result.text", result.toString())
     }
 }
