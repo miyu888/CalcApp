@@ -2,8 +2,6 @@ package jp.techacademy.miyu.oshima.calcapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.widget.EditText
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonplus.text = "Plus"
-        buttonplus.setOnClickListener{view ->
+        buttonplus.setOnClickListener { view ->
             if (editText1.text.isEmpty() || editText2.text.isEmpty()) {
                 Snackbar.make(view, "数値を正確に入力してください", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Undo") {}.show()
@@ -31,8 +29,8 @@ class MainActivity : AppCompatActivity() {
             }
             result.text = (getNumber1() + getNumber2()).toString()
 
-            val intent = Intent(this, SecondCalcApp::class.java).apply {
-                intent.putExtra("result.text", result.text.toString())} //第一引数Key、第二引数渡したい値
+            val intent = Intent(this, SecondCalcApp::class.java)
+            intent.putExtra("result", result.text.toString()) //第一引数Key、第二引数渡したい値
             startActivity(intent)
 
         }
@@ -47,8 +45,8 @@ class MainActivity : AppCompatActivity() {
             result.text = "0"
             result.text = (getNumber1() - getNumber2()).toString()
 
-            val intent = Intent(this, SecondCalcApp::class.java).apply {
-                intent.putExtra("result.text", result.text.toString())}
+            val intent = Intent(this, SecondCalcApp::class.java)
+                intent.putExtra("result", result.text.toString())
             startActivity(intent)
 
         }
@@ -64,8 +62,8 @@ class MainActivity : AppCompatActivity() {
             result.text = "0"
             result.text = (getNumber1() * getNumber2()).toString()
 
-            val intent = Intent(this, SecondCalcApp::class.java).apply {
-                intent.putExtra("result.text", result.text.toString())}
+            val intent = Intent(this, SecondCalcApp::class.java)
+                intent.putExtra("result", result.text.toString())
             startActivity(intent)
 
         }
@@ -80,8 +78,8 @@ class MainActivity : AppCompatActivity() {
             result.text = "0"
             result.text = (getNumber1() / getNumber2()).toString()
 
-            val intent = Intent(this, SecondCalcApp::class.java).apply {
-                intent.putExtra("result.text", result.text.toString())}
+            val intent = Intent(this, SecondCalcApp::class.java)
+                intent.putExtra("result", result.text.toString())
             startActivity(intent)
 
         }
