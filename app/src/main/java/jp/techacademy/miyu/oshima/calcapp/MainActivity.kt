@@ -8,9 +8,6 @@ import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 
-        //var nStr : String = ""
-        //var nlist = ArrayList<Double>()
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,14 +83,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getNumber1():Int {
+    fun getNumber1():Double {
         val fomula1 = findViewById(R.id.editText1) as EditText
-        return Integer.parseInt(fomula1.text.toString())
+        return fomula1.text.toString().toDouble()
     }
 
-    fun getNumber2():Int{
+    fun getNumber2():Double{
         val fomula2 = findViewById(R.id.editText2) as EditText
-        return Integer.parseInt(fomula2.text.toString())
+        return fomula2.text.toString().toDouble()
 
     }
 
